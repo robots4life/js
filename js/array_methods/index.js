@@ -38,7 +38,7 @@ console.log('+++++++++++++++++++++++++++++++++++++++++++++');
 const allNames = characters.map((element) => {
     return element.name;
 });
-console.log('Map 1. Get array of all names');
+console.log('MAP 1. Get array of all names');
 console.log(allNames);
 console.log('--------');
 
@@ -46,7 +46,7 @@ console.log('--------');
 const allHeights = characters.map((element) => {
     return element.height;
 });
-console.log('Map 2. Get array of all heights');
+console.log('MAP 2. Get array of all heights');
 console.log(allHeights);
 console.log('--------');
 
@@ -54,7 +54,7 @@ console.log('--------');
 const allNamesHeights = characters.map((element) => {
     return { name: element.name, height: element.height };
 });
-console.log(' Map 3. Get array of objects with just name and height properties');
+console.log('MAP 3. Get array of objects with just name and height properties');
 console.log(allNamesHeights);
 console.log('--------');
 
@@ -62,7 +62,7 @@ console.log('--------');
 const allFirstNames = characters.map((element) => {
     return element.name.split(' ')[0];
 });
-console.log('Map 4. Get array of all first names');
+console.log('MAP 4. Get array of all first names');
 console.log(allFirstNames);
 console.log('--------');
 console.log('');
@@ -134,7 +134,7 @@ console.log('+++++++++++++++++++++++++++++++++++++++++++++');
 const filterMassGreaterThan100 = characters.filter((element) => {
     return element.mass > 100;
 });
-console.log('Filter 1. Get characters with mass greater than 100');
+console.log('FILTER 1. Get characters with mass greater than 100');
 console.log(filterMassGreaterThan100);
 console.log('--------');
 
@@ -142,7 +142,7 @@ console.log('--------');
 const filterHeightLessThan200 = characters.filter((element) => {
     return element.height < 200;
 });
-console.log('Filter 2. Get characters with height less than 200');
+console.log('FILTER 2. Get characters with height less than 200');
 console.log(filterHeightLessThan200);
 console.log('--------');
 
@@ -150,7 +150,7 @@ console.log('--------');
 const filterAllMale = characters.filter((element) => {
     return element.gender === 'male';
 });
-console.log('Filter 3. Get all male characters');
+console.log('FILTER 3. Get all male characters');
 console.log(filterAllMale);
 console.log('--------');
 
@@ -158,7 +158,7 @@ console.log('--------');
 const filterAllFemale = characters.filter((element) => {
     return element.gender === 'female';
 });
-console.log('// Filter 4. Get all female characters');
+console.log('FILTER 4. Get all female characters');
 console.log(filterAllFemale);
 console.log('--------');
 console.log('');
