@@ -1,0 +1,5 @@
+npm init --yes
+
+npm install --save-dev eslint prettier eslint-plugin-prettier eslint-config-prettier eslint-plugin-node eslint-config-node eslint-plugin-import --verbose
+
+npm install --save-dev eslint-config-airbnb-base --verbose

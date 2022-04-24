@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../../js-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="stylesheet" href="../../highlight/styles/github-dark-dimmed.min.css" />
+        <script src="../../highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <title>Array Methods</title>
+        <style>
+            html {
+                background-color: black;
+                color: lightslategrey;
+                font-size: 1.2rem;
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+                    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+            }
+
+            code {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Array Methods</h1>
+        <pre><code>
+const characters = [
+    {
+        name: "Luke Skywalker",
+        height: 172,
+        mass: 77,
+        eye_color: "blue",
+        gender: "male",
+    },
+    {
+        name: "Darth Vader",
+        height: 202,
+        mass: 136,
+        eye_color: "yellow",
+        gender: "male",
+    },
+    {
+        name: "Leia Organa",
+        height: 150,
+        mass: 49,
+        eye_color: "brown",
+        gender: "female",
+    },
+    {
+        name: "Anakin Skywalker",
+        height: 188,
+        mass: 84,
+        eye_color: "blue",
+        gender: "male",
+    },
+];
+            </code></pre>
+        <hr />
+        <h1>MAP</h1>
+        <h2>1. Get array of all names</h2>
+
+        <pre><code>
+const allNames = characters.map((element) => {
+
+        return element.name;
+
+});
+</code></pre>
+
+        Implicit Return
+
+        <pre><code>
+const allHeights = characters.map((element) => element.height);			
+</code></pre>
+
+        <h2>2. Get array of all heights</h2>
+
+        <pre><code>
+const allHeights = characters.map((element) => {
+
+        return element.height;
+
+});			
+</code></pre>
+
+        <h2>3. Get array of objects with just name and height properties</h2>
+
+        <pre><code>
+const allNamesHeights = characters.map((element) => {
+
+        return { name: element.name, height: element.height };
+
+});			
+</code></pre>
+
+        <h2>4. Get array of all first names</h2>
+
+        <pre><code>
+const allFirstNames = characters.map((element) => {
+
+        return element.name.split(' ')[0];
+
+});			
+</code></pre>
+
+        <hr />
+        <h1>REDUCE</h1>
+        <h2>1. Get total mass of all characters</h2>
+
+        <pre><code>
+const totalMass = characters.reduce((accumulator, currentElement) => {
+
+        return accumulator + currentElement.mass;
+
+}, 0);
+
+// 0 here is the start of the sum of the mass
+// it is the start of the accumulator
+// so let's start with 0
+</code></pre>
+
+        <h2>2. Get total height of all characters</h2>
+
+        <pre><code>
+const totalHeight = characters.reduce((accumulator, currentElement) => {
+
+        return accumulator + currentElement.height;
+
+}, 0);			
+</code></pre>
+
+        <h2>3. Get total number of characters by eye color</h2>
+
+        <pre><code>
+const totalEyeColor = characters.reduce((accumulator, currentElement) => {
+
+    if (accumulator[currentElement.eye_color]) {
+
+        accumulator[currentElement.eye_color] = accumulator[currentElement.eye_color] + 1;
+
+    } else {
+
+        accumulator[currentElement.eye_color] = 1;
+
+    }
+
+    return accumulator;
+
+}, {});		
+</code></pre>
+
+        Shorter Version
+
+        <pre><code>
+const totalEyeColorShorterVersion = characters.reduce((accumulator, currentElement) => {
+
+        const color = currentElement.eye_color;
+        
+        if (accumulator[color]) {
+
+                accumulator[color]++;
+
+        } else {
+
+                accumulator[color] = 1;
+        }
+
+        return accumulator;
+
+}, {});			
+</code></pre>
+
+        <h2>4. Get total number of characters in all the character names</h2>
+
+        <pre><code>
+const totalCharsNames = characters.reduce((accumulator, currentElement) => {
+
+    return accumulator + currentElement.name.length;
+
+}, 0);			
+</code></pre>
+
+        <hr />
+        <h1>FILTER</h1>
+        <h2>1. Get characters with mass greater than 100</h2>
+
+        <pre><code>
+const filterMassGreaterThan100 = characters.filter((element) => {
+
+        return element.mass > 100;
+
+});	
+</code></pre>
+
+        <h2>2. Get characters with height less than 200</h2>
+
+        <pre><code>
+const filterHeightLessThan200 = characters.filter((element) => {
+
+        return element.height < 200;
+
+});	
+</code></pre>
+
+        <h2>3. Get all male characters</h2>
+
+        <pre><code>
+const filterAllMale = characters.filter((element) => {
+
+    return element.gender === 'male';
+
+});			
+</code></pre>
+
+        <h2>4. Get all female characters</h2>
+
+        <pre><code>
+const filterAllFemale = characters.filter((element) => {
+
+    return element.gender === 'female';
+
+});			
+</code></pre>
+
+        <hr />
+        <h1>SORT</h1>
+        <h2>1. Sort by mass</h2>
+
+        <pre><code>
+const sortByMass = characters.sort((a, b) => {
+
+    return a.mass - b.mass;
+    
+});			
+</code></pre>
+
+        Implicit Return
+
+        <pre><code>
+const sortByMass = characters.sort((a, b) => a.mass - b.mass);
+</code></pre>
+        <h2>2. Sort by height</h2>
+
+        <pre><code>
+const sortByHeight = characters.sort((a, b) => {
+
+        return a.height - b.height;
+
+});			
+</code></pre>
+
+        Implicit Return
+
+        <pre><code>
+const sortByHeight = characters.sort((a, b) => a.height - b.height);
+</code></pre>
+
+        <h2>3. Sort by name</h2>
+
+        <pre><code>
+const sortByFirstName = characters.sort((a, b) => {
+
+        // return console.log(a.name + ' ' + b.name);
+        // return b.name;
+
+        if (a.name < b.name) return -1;
+
+        return 1;
+
+});			
+</code></pre>
+
+        <h2>4. Sort by gender</h2>
+
+        <pre><code>
+const sortByGender = characters.sort((a) => {
+
+    if (a.gender === 'female') return -1;
+
+    return 1;
+
+});			
+</code></pre>
+
+        <h2>5. Sort by last name</h2>
+
+        <pre><code>
+const sortByLastName = characters.sort((a, b) => {
+
+    if (a.name.split(' ')[1] < b.name.split(' ')[1]) return -1;
+
+    return 1;
+
+});			
+</code></pre>
+
+        <h2>5. Sort by last name and height</h2>
+
+        <pre><code>
+const sortByLastNameHeight = characters.sort((a, b) => {
+
+    if (a.name.split(' ')[1] < b.name.split(' ')[1] && a.height < b.height) return -1;
+
+    return 1;
+
+});			
+</code></pre>
+
+        <hr />
+        <h1>EVERY</h1>
+        <h2>1. Does every character have blue eyes?</h2>
+
+        <pre><code>
+const everyBlueEyes = characters.every((element) => {
+
+    return element.eye_color === 'blue';
+
+});			
+</code></pre>
+
+        <h2>2. Does every character have mass more than 40?</h2>
+
+        <pre><code>
+const everyMassMoreThan40 = characters.every((element) => {
+
+    return element.mass > 40;
+
+});			
+</code></pre>
+
+        <h2>3. Is every character shorter than 200?</h2>
+
+        <pre><code>
+const everyCharShorterThan200 = characters.every((element) => {
+
+    return element.height < 200;
+
+});			
+</code></pre>
+
+        <h2>4. Is every character male?</h2>
+
+        <pre><code>
+const everyCharMale = characters.every((element) => {
+
+    return element.gender === 'male';
+
+});			
+</code></pre>
+
+        <hr />
+        <h1>SOME</h1>
+        <h2>1. Is there at least one male character?</h2>
+
+        <pre><code>
+const atLeastOneMale = characters.some((element) => {
+
+    return element.gender === 'male';
+
+});
+</code></pre>
+
+        <h2>2. Is there at least one character with blue eyes?</h2>
+
+        <pre><code>
+const atLeastOneBlueEyes = characters.some((element) => {
+
+    return element.eye_color === 'blue';
+
+});			
+</code></pre>
+
+        <h2>3. Is there at least one character taller than 210?</h2>
+
+        <pre><code>
+const atLeastOneTaller210 = characters.some((element) => {
+
+    return element.height > 210;
+
+});			
+</code></pre>
+
+        <h2>4. Is there at least one character that has mass less than 50?</h2>
+
+        <pre><code>
+const atLeastOneMassLess50 = characters.some((element) => {
+
+    return element.mass < 50;
+    
+});			
+</code></pre>
+
+        <script src="index.js"></script>
+    </body>
+</html>

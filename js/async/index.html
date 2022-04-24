@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../../js-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="stylesheet" href="../../highlight/styles/github-dark-dimmed.min.css" />
+        <script src="../../highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+
+        <title>Async JS - Promises, Async Await, Try Catch</title>
+        <style>
+            html {
+                background-color: black;
+                color: lightslategrey;
+                font-size: 1.2rem;
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+                    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+            }
+
+            code {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Async JS - Promises, Async Await, Try Catch</h1>
+        <h3>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json"
+                >Response.json()</a
+            >
+        </h3>
+        <p>
+            The json() method of the Response interface takes a Response stream and reads it to
+            completion.
+        </p>
+        <p>It returns a promise which resolves with the result of parsing the body text as JSON.</p>
+        <p>
+            Note that despite the method being named json(), the result is
+            <strong>not JSON</strong> but is instead the result of taking JSON as input and parsing
+            it <strong>to produce a JavaScript object</strong>.
+        </p>
+
+        <h2>Promises</h2>
+        <hr />
+        <strong>
+            <pre><code>
+function fetchData(url) {
+
+    return fetch(url)
+    
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((err) => {
+            console.error('fetch failed', err);
+        });
+}
+
+fetchData('https://pokeapi.co/api/v2/pokemon/42');                
+            </code></pre>
+        </strong>
+        <h2>Promises with Async Await and Try Catch</h2>
+        <hr />
+        <strong>
+            <pre><code>
+const fetchPokemon = async (id) => {
+
+    try {
+
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+
+        const pokemonData = await response.json();
+
+        console.log(pokemonData);
+
+    } catch (error) {
+
+        console.log('ERROR');
+
+        console.log(error);
+
+    }
+};
+
+fetchPokemon(36);                
+            </code></pre>
+        </strong>
+        <hr />
+        <strong>
+            <pre><code>
+const fetchPokemonUrlId = async (url, id) => {
+
+    try {
+
+        const response = await fetch(url + id);
+
+        const pokemonData = await response.json();
+
+        console.log(pokemonData);
+
+    } catch (error) {
+
+        console.log('ERROR');
+
+        console.log(error);
+
+    }
+};
+
+fetchPokemonUrlId('https://pokeapi.co/api/v2/pokemon/', 20);              
+            </code></pre>
+        </strong>
+        <script src="index.js"></script>
+    </body>
+</html>
