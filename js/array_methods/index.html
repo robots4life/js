@@ -16,9 +16,7 @@
                 background-color: black;
                 color: lightslategrey;
                 font-size: 1.2rem;
-                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-                    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-                    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
             }
 
             code {
@@ -140,17 +138,17 @@ const totalHeight = characters.reduce((accumulator, currentElement) => {
         <pre><code>
 const totalEyeColor = characters.reduce((accumulator, currentElement) => {
 
-    if (accumulator[currentElement.eye_color]) {
+        if (accumulator[currentElement.eye_color]) {
 
-        accumulator[currentElement.eye_color] = accumulator[currentElement.eye_color] + 1;
+                accumulator[currentElement.eye_color] = accumulator[currentElement.eye_color] + 1;
 
-    } else {
+        } else {
 
-        accumulator[currentElement.eye_color] = 1;
+                accumulator[currentElement.eye_color] = 1;
 
-    }
+        }
 
-    return accumulator;
+        return accumulator;
 
 }, {});		
 </code></pre>
@@ -181,7 +179,7 @@ const totalEyeColorShorterVersion = characters.reduce((accumulator, currentEleme
         <pre><code>
 const totalCharsNames = characters.reduce((accumulator, currentElement) => {
 
-    return accumulator + currentElement.name.length;
+        return accumulator + currentElement.name.length;
 
 }, 0);			
 </code></pre>
@@ -213,7 +211,7 @@ const filterHeightLessThan200 = characters.filter((element) => {
         <pre><code>
 const filterAllMale = characters.filter((element) => {
 
-    return element.gender === 'male';
+        return element.gender === 'male';
 
 });			
 </code></pre>
@@ -223,7 +221,7 @@ const filterAllMale = characters.filter((element) => {
         <pre><code>
 const filterAllFemale = characters.filter((element) => {
 
-    return element.gender === 'female';
+        return element.gender === 'female';
 
 });			
 </code></pre>
@@ -235,7 +233,7 @@ const filterAllFemale = characters.filter((element) => {
         <pre><code>
 const sortByMass = characters.sort((a, b) => {
 
-    return a.mass - b.mass;
+        return a.mass - b.mass;
     
 });			
 </code></pre>
@@ -281,9 +279,9 @@ const sortByFirstName = characters.sort((a, b) => {
         <pre><code>
 const sortByGender = characters.sort((a) => {
 
-    if (a.gender === 'female') return -1;
+        if (a.gender === 'female') return -1;
 
-    return 1;
+        return 1;
 
 });			
 </code></pre>
@@ -293,9 +291,9 @@ const sortByGender = characters.sort((a) => {
         <pre><code>
 const sortByLastName = characters.sort((a, b) => {
 
-    if (a.name.split(' ')[1] < b.name.split(' ')[1]) return -1;
+        if (a.name.split(' ')[1] < b.name.split(' ')[1]) return -1;
 
-    return 1;
+        return 1;
 
 });			
 </code></pre>
@@ -305,9 +303,9 @@ const sortByLastName = characters.sort((a, b) => {
         <pre><code>
 const sortByLastNameHeight = characters.sort((a, b) => {
 
-    if (a.name.split(' ')[1] < b.name.split(' ')[1] && a.height < b.height) return -1;
+        if (a.name.split(' ')[1] < b.name.split(' ')[1] && a.height < b.height) return -1;
 
-    return 1;
+        return 1;
 
 });			
 </code></pre>
@@ -319,7 +317,7 @@ const sortByLastNameHeight = characters.sort((a, b) => {
         <pre><code>
 const everyBlueEyes = characters.every((element) => {
 
-    return element.eye_color === 'blue';
+        return element.eye_color === 'blue';
 
 });			
 </code></pre>
@@ -329,7 +327,7 @@ const everyBlueEyes = characters.every((element) => {
         <pre><code>
 const everyMassMoreThan40 = characters.every((element) => {
 
-    return element.mass > 40;
+        return element.mass > 40;
 
 });			
 </code></pre>
@@ -339,7 +337,7 @@ const everyMassMoreThan40 = characters.every((element) => {
         <pre><code>
 const everyCharShorterThan200 = characters.every((element) => {
 
-    return element.height < 200;
+        return element.height < 200;
 
 });			
 </code></pre>
@@ -349,7 +347,7 @@ const everyCharShorterThan200 = characters.every((element) => {
         <pre><code>
 const everyCharMale = characters.every((element) => {
 
-    return element.gender === 'male';
+        return element.gender === 'male';
 
 });			
 </code></pre>
@@ -361,7 +359,7 @@ const everyCharMale = characters.every((element) => {
         <pre><code>
 const atLeastOneMale = characters.some((element) => {
 
-    return element.gender === 'male';
+        return element.gender === 'male';
 
 });
 </code></pre>
@@ -371,7 +369,7 @@ const atLeastOneMale = characters.some((element) => {
         <pre><code>
 const atLeastOneBlueEyes = characters.some((element) => {
 
-    return element.eye_color === 'blue';
+        return element.eye_color === 'blue';
 
 });			
 </code></pre>
@@ -381,7 +379,7 @@ const atLeastOneBlueEyes = characters.some((element) => {
         <pre><code>
 const atLeastOneTaller210 = characters.some((element) => {
 
-    return element.height > 210;
+        return element.height > 210;
 
 });			
 </code></pre>
@@ -391,7 +389,7 @@ const atLeastOneTaller210 = characters.some((element) => {
         <pre><code>
 const atLeastOneMassLess50 = characters.some((element) => {
 
-    return element.mass < 50;
+        return element.mass < 50;
     
 });			
 </code></pre>

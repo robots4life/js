@@ -17,9 +17,7 @@
                 background-color: black;
                 color: lightslategrey;
                 font-size: 1.2rem;
-                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-                    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
-                    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
             }
 
             code {
@@ -31,19 +29,13 @@
     <body>
         <h1>Async JS - Promises, Async Await, Try Catch</h1>
         <h3>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json"
-                >Response.json()</a
-            >
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response/json">Response.json()</a>
         </h3>
-        <p>
-            The json() method of the Response interface takes a Response stream and reads it to
-            completion.
-        </p>
+        <p>The json() method of the Response interface takes a Response stream and reads it to completion.</p>
         <p>It returns a promise which resolves with the result of parsing the body text as JSON.</p>
         <p>
             Note that despite the method being named json(), the result is
-            <strong>not JSON</strong> but is instead the result of taking JSON as input and parsing
-            it <strong>to produce a JavaScript object</strong>.
+            <strong>not JSON</strong> but is instead the result of taking JSON as input and parsing it <strong>to produce a JavaScript object</strong>.
         </p>
 
         <h2>Promises</h2>
@@ -52,15 +44,16 @@
             <pre><code>
 function fetchData(url) {
 
-    return fetch(url)
-    
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((err) => {
-            console.error('fetch failed', err);
-        });
+        return fetch(url)
+        
+            .then((response) => response.json())            
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.error('fetch failed', err);
+            });
+
 }
 
 fetchData('https://pokeapi.co/api/v2/pokemon/42');                
@@ -72,21 +65,21 @@ fetchData('https://pokeapi.co/api/v2/pokemon/42');
             <pre><code>
 const fetchPokemon = async (id) => {
 
-    try {
+        try {
 
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
 
-        const pokemonData = await response.json();
+                const pokemonData = await response.json();
 
-        console.log(pokemonData);
+                console.log(pokemonData);
 
-    } catch (error) {
+        } catch (error) {
 
-        console.log('ERROR');
+                console.log('ERROR');
 
-        console.log(error);
+                console.log(error);
 
-    }
+        }
 };
 
 fetchPokemon(36);                
@@ -97,21 +90,21 @@ fetchPokemon(36);
             <pre><code>
 const fetchPokemonUrlId = async (url, id) => {
 
-    try {
+        try {
 
-        const response = await fetch(url + id);
+                const response = await fetch(url + id);
 
-        const pokemonData = await response.json();
+                const pokemonData = await response.json();
 
-        console.log(pokemonData);
+                console.log(pokemonData);
 
-    } catch (error) {
+        } catch (error) {
 
-        console.log('ERROR');
+                console.log('ERROR');
 
-        console.log(error);
+                console.log(error);
 
-    }
+        }
 };
 
 fetchPokemonUrlId('https://pokeapi.co/api/v2/pokemon/', 20);              
