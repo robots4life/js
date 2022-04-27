@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../../js-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="stylesheet" href="../../highlight/styles/github-dark-dimmed.min.css" />
+        <script src="../../highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <title>Callbacks, Functions passing Functions as Arguments, Enclosure</title>
+        <style>
+            html {
+                background-color: black;
+                color: lightslategrey;
+                font-size: 1.2rem;
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+            }
+
+            code {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Callbacks, Functions passing Functions as Arguments, Enclosure</h1>
+        <pre><code>
+const characters = [
+    {
+        name: "Luke Skywalker",
+        height: 172,
+        mass: 77,
+        eye_color: "blue",
+        gender: "male",
+    },
+    {
+        name: "Darth Vader",
+        height: 202,
+        mass: 136,
+        eye_color: "yellow",
+        gender: "male",
+    },
+    {
+        name: "Leia Organa",
+        height: 150,
+        mass: 49,
+        eye_color: "brown",
+        gender: "female",
+    },
+    {
+        name: "Anakin Skywalker",
+        height: 188,
+        mass: 84,
+        eye_color: "blue",
+        gender: "male",
+    },
+];
+            </code></pre>
+        <hr />
+        <h1>CALLBACK</h1>
+        <p>A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.</p>
+        <a href="https://developer.mozilla.org/en-US/docs/Glossary/Callback_function"><strong>Callback function</strong></a>
+        <h2>1. Call function sayHello as an argument of function greetPerson</h2>
+        <h3>- log the function calls</h3>
+
+        <p>The <strong>sayHello</strong> function simply logs a greeting.</p>
+        <p>The <strong>greetPerson</strong> function has an argument <strong>person</strong>.</p>
+        <p>Inside the <strong>greetPerson</strong> function this argument is called as a function with <strong>person()</strong>.</p>
+        <p>When calling the <strong>greetPerson</strong> function the parameter <strong>person</strong> becomes the <strong>sayHello</strong> function as an <strong>argument</strong> of the <strong>greetPerson</strong> function.</p>
+        <pre><code>
+function sayHello() {
+
+        console.log('sayHello function greets you')
+
+}
+
+
+function greetPerson(person) {
+
+        console.log('greetPerson function invokes the greeting');
+
+        person();
+
+}
+
+
+greetPerson(sayHello);
+
+
+
+"greetPerson function invokes the greeting"
+
+"sayHello function greets you"
+        </code></pre>
+
+        <h2>2. Call function sayWelcome as an argument of function greetGuest</h2>
+        <h3>- return the sayWelcome function value</h3>
+
+        <pre><code>
+function sayWelcome() {
+
+        return 'sayWelcome function greets you';
+
+}
+
+
+function greetGuest(welcome) {
+
+        return welcome();
+
+}
+
+
+// this will not log since the retunred value is not stored in a variable
+
+// greetGuest(sayWelcome); 
+
+
+const greeting = greetGuest(sayWelcome);
+
+console.log(greeting);
+
+
+
+"sayWelcome function greets you"
+        </code></pre>
+
+        <h2>3. Call function sayBye as an argument of function farwellPerson</h2>
+        <h3>- return both the sayBye and the farwellPerson function values</h3>
+
+        <pre><code>
+function sayBye() {
+
+        return 'sayBye function says goodbye';
+
+}
+
+
+function farewellPerson(bye) {
+
+        
+        function helper() {
+
+                console.log('farewellPerson function invokes the farewell');
+
+                return bye();
+
+        }
+
+        return helper();
+
+}
+
+
+const farewell = farewellPerson(sayBye);
+
+console.log(farewell);
+
+
+
+"farewellPerson function invokes the farewell"
+
+"sayBye function says goodbye"
+        </code></pre>
+
+        <h2>4. Call function sayByeAgain as an argument of function farewellPersonAgain</h2>
+        <h3>- return both the sayByeAgain and the farewellPersonAgain function values</h3>
+        <h3>- return the number of times farewellPersonAgain has been called</h3>
+
+        <pre><code>
+function sayByeAgain() {
+
+        return 'sayBye function says goodbye';
+
+}
+
+
+function farewellPersonAgain(bye) {
+
+        let numCalled = 0;
+
+
+        function helper() {
+
+
+                numCalled += 1;
+
+                console.log(`farewellPersonAgain called ${numCalled} time(s)`);
+
+
+                console.log('farewellPerson function invokes the farewell');
+
+                return bye();
+        }
+
+        return helper;
+
+}
+
+
+const farewellAgain = farewellPersonAgain(sayByeAgain);
+
+console.log(farewellAgain());
+
+console.log(farewellAgain());
+
+
+
+"farewellPersonAgain called 1 time(s)"
+"farewellPerson function invokes the farewell"
+"sayBye function says goodbye"
+
+
+"farewellPersonAgain called 2 time(s)"
+"farewellPerson function invokes the farewell"
+"sayBye function says goodbye"
+        </code></pre>
+        <hr />
+        <h1>MAP</h1>
+        <p>The <strong>map()</strong> method creates a <strong>new array</strong> populated with the results of calling a provided function on every element in the calling array.</p>
+        <br />
+        <p>
+            You should not be using map if: <br /><br />
+
+            - <strong>you are not using the array it returns</strong>;<br /><br />
+
+            and/or<br /><br />
+
+            - <strong>you are not returning a value from the callback</strong>.<br />
+        </p>
+        <br />
+        <p>
+            You should be using map if: <br /><br />
+
+            - <strong>you are using the array it returns</strong>;<br /><br />
+
+            and/or<br /><br />
+
+            - <strong>you are returning a value from the callback</strong>.<br />
+        </p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><strong>map()</strong></a>
+        <h2>1. Get array of first character of all names</h2>
+        <h3>- use a callback function</h3>
+        <p>
+            To get the first character of a string we can use the
+            <strong>substring()</strong> method.
+        </p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substring"><strong>substring()</strong> </a>
+        <pre><code>
+function getFirstCharOfName(element) {
+
+        return element.name.substring(0, 1);
+
+}
+
+const firstCharOfNames = characters.map(getFirstCharOfName);
+
+
+Array(4) [ "L", "D", "L", "A" ]
+            </code></pre>
+
+        <hr />
+        <h1>FOREACH</h1>
+        <p>The <strong>forEach()</strong> method executes a provided function <strong>once for each array element</strong>.</p>
+        <p>forEach() <strong>does not mutate</strong> the array on which it is called.</p>
+        <p>However <strong>a callback function may do</strong> so.</p>
+
+        <h2>1. Change character name to only have the first 3 characters</h2>
+        <h3>- use a callback function</h3>
+        <pre><code>
+function mutateCharacterName(element) {
+
+        element.name = element.name.substring(0, 3);
+
+}
+
+characters.forEach(mutateCharacterName);
+
+
+Luk
+
+Dar
+
+Lei
+
+Ana
+            </code></pre>
+        <script src="index.js"></script>
+    </body>
+</html>
