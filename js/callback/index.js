@@ -32,6 +32,14 @@ const characters = [
 // CALLBACK
 // +++++++++++++++++++++++++++++++++++++++++++++
 console.log('+++++++++++++++++++++++++++++++++++++++++++++');
+const haveFun = function beingFunny() {
+    console.log('This is fun');
+};
+console.log('A variable haveFun is assigned a function and called');
+haveFun();
+console.log('--------');
+
+console.log('+++++++++++++++++++++++++++++++++++++++++++++');
 // Callback 1. Call function sayHello as an argument of function greetPerson
 // - log the function calls
 

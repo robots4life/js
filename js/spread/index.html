@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="../../js-32x32.png" type="image/png" sizes="32x32" />
+        <link rel="stylesheet" href="../../highlight/styles/github-dark-dimmed.min.css" />
+        <script src="../../highlight/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <title>Spread syntax</title>
+        <style>
+            html {
+                background-color: black;
+                color: lightslategrey;
+                font-size: 1.2rem;
+                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+            }
+
+            code {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Spread syntax</h1>
+        <pre><code>
+const characters = [
+    {
+        name: "Luke Skywalker",
+        height: 172,
+        mass: 77,
+        eye_color: "blue",
+        gender: "male",
+    },
+    {
+        name: "Darth Vader",
+        height: 202,
+        mass: 136,
+        eye_color: "yellow",
+        gender: "male",
+    },
+    {
+        name: "Leia Organa",
+        height: 150,
+        mass: 49,
+        eye_color: "brown",
+        gender: "female",
+    },
+    {
+        name: "Anakin Skywalker",
+        height: 188,
+        mass: 84,
+        eye_color: "blue",
+        gender: "male",
+    },
+];
+            </code></pre>
+        <hr />
+        <h1>Spread syntax</h1>
+        <p>Spread syntax can be used when all elements from an object or array need to be included in a list of some kind.</p>
+        <p>When we invoke the function, we pass it all the values in the array using the spread syntax and the array name.</p>
+        <p>It is commonly used when you want to add a new item to a local data store, or display all stored items plus a new addition.</p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax"><strong>Spread syntax</strong></a>
+
+        <h2>1. Add the newNumber to the numberStore.</h2>
+        <pre><code>
+let numberStore = [0, 1, 2];
+
+const newNumber = 43;
+
+
+numberStore = [...numberStore, newNumber];
+
+console.log(numberStore);
+
+
+
+"Array(4) [ 0, 1, 2, 43 ]"
+        </code></pre>
+
+        <h2>2. Log all elements of the characters array</h2>
+        <p>We pass all elements of the object or array that is going to be itterated as arguments to the function.</p>
+
+        <pre><code>
+function logSpread(...element) {
+
+        console.log(element);
+
+}
+
+
+logSpread(...characters);
+
+
+
+"Array(4) [ {…}, {…}, {…}, {…} ]"
+        </code></pre>
+        <img src="/js/spread/img/Screenshot_20220428_171254.png" alt="" />
+
+        <h2>3. Add an ID property with a random ID to each of the characters creating a new charactersWithId array</h2>
+        <p>Any argument in the argument list can use spread syntax, and the spread syntax can be used multiple times.</p>
+
+        <pre><code>
+function addIdToCharacter(element) {
+
+        const newId = { id: Math.floor(Math.random() * 10000) };
+
+        return { ...element, ...newId };
+
+        }
+
+
+const charactersWithId = characters.map(addIdToCharacter);
+
+console.log(charactersWithId);
+
+
+
+"Array(4) [ {…}, {…}, {…}, {…} ]"
+        </code></pre>
+        <img src="/js/spread/img/Screenshot_20220428_160846.png" alt="" />
+
+        <hr />
+        <h1>MAP</h1>
+        <pre><code>
+        </code></pre>
+        <script src="index.js"></script>
+    </body>
+</html>
