@@ -124,5 +124,15 @@ console.log(charactersWithId);
         </code></pre>
         <img src="/js/spread/img/Screenshot_20220428_160846.png" alt="" />
         <script src="index.js"></script>
+        <script>
+            const currentURL = window.location.href;
+            const githubURL = 'robots4life.github.io';
+            const allImgs = document.querySelectorAll('img');
+            if (currentURL.includes(githubURL)) {
+                allImgs.forEach((e) => {
+                    e.src = e.src.replace('/js/', '/js/js/');
+                });
+            }
+        </script>
     </body>
 </html>
