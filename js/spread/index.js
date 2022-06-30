@@ -73,3 +73,9 @@ const charactersWithId = characters.map(addIdToCharacter);
 console.log('SPREAD 3. Add an ID property with a random ID to each of the characters creating a new charactersWithId array');
 console.log(charactersWithId);
 console.log('--------');
+
+// https://stackoverflow.com/questions/19324700/how-to-loop-through-all-the-elements-returned-from-getelementsbytagname/41195514#41195514
+/*
+const children = [...parent.getElementsByTagName('tag')];
+children.forEach((child) => { Do something; });
+*/

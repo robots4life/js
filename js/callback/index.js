@@ -110,7 +110,7 @@ function farewellPersonAgain(bye) {
         numCalled += 1;
         console.log(`farewellPersonAgain called ${numCalled} time(s)`);
 
-        console.log('farewellPerson function invokes the farewell');
+        console.log('farewellPersonAgain function invokes the farewell');
         return bye();
     }
     return helper;
